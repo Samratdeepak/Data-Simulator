@@ -13,6 +13,13 @@ source venv/bin/activate
 
 # then run these commands
 
+redis-server
+
+celery -A main.celery_app worker --loglevel=info --pool=threads --concurrency=4 -Q celery -n worker1@%h
+
+
+celery -A main.celery_app --broker=redis://localhost:6379/0 flower --port=5555
+
 pip install -r requirements.txt
 
 uvicorn main:app --reload
