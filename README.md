@@ -9,6 +9,10 @@ python3 -m venv venv
 # in linux
 source venv/bin/activate
 
+
+
+# then run these commands
+
 pip install -r requirements.txt
 
 uvicorn main:app --reload
